@@ -12,8 +12,8 @@ end
 def orthogonally_adjacent_squares( board, coordinates )
     row = coordinates[ 0 ]
     column = coordinates[ 1 ]
-    all_adjacent_squares = [ row ].product( [ row - 1, row + 1 ] ) + [ column - 1, column + 1 ].product( [ row ] )
-    all_adjacent_squares.select{ | square | square[ 0 ].between?( 0, board.size - 1) && square[ 1 ].between?( 0, board.first.size - 1 ) && square != coordinates }
+    all_adjacent_squares = [ [ row - 1, column ], [ row, column + 1 ], [ row + 1, column ], [ row, column - 1 ] ]
+    all_adjacent_squares.select{ | square | square[ 0 ].between?( 0, board.size - 1) && square[ 1 ].between?( 0, board.first.size - 1 ) }
 end
 
 def possible_paths( board, current_coordinates, destination, path_so_far, path_list )
@@ -48,6 +48,7 @@ three_by_six = [
     [ "10", "11", "12", "13", "14", "15" ],
     [ "20", "21", "22", "23", "24", "25" ] ]
 
+# this one will take several hours to run! >.<
 seven_by_seven = [
     [ "00", "01", "02", "03", "04", "05", "06" ],
     [ "10", "11", "12", "13", "14", "15", "16" ],
