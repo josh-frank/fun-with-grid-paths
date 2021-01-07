@@ -16,6 +16,9 @@ def orthogonally_adjacent_squares( board, coordinates )
     all_adjacent_squares.select{ | square | square[ 0 ].between?( 0, board.size - 1) && square[ 1 ].between?( 0, board.first.size - 1 ) }
 end
 
+######################################################################################
+# This version of possible_paths runs significantly faster despite the nested blocks #
+######################################################################################
 def possible_paths( board, current_coordinates, destination, path_so_far, path_list )
     current_square_value = board[ current_coordinates[ 0 ] ][ current_coordinates[ 1 ] ]
     if current_coordinates == destination
@@ -30,6 +33,27 @@ def possible_paths( board, current_coordinates, destination, path_so_far, path_l
         end
     end
 end
+
+#########################################################################################
+# This version with a helper check_adjacent_squares is formatted better but runs slowly #
+#########################################################################################
+# def possible_paths( board, current_coordinates, destination, path_so_far, path_list )
+#     if current_coordinates == destination
+#         path_so_far.push( board[ current_coordinates[ 0 ] ][ current_coordinates[ 1 ] ] )
+#         path_list << path_so_far
+#     else
+#         check_adjacent_squares( board, current_coordinates, destination, path_so_far, path_list )
+#     end
+# end
+
+# def check_adjacent_squares( board, current_coordinates, destination, path_so_far, path_list )
+#     adjacent_squares( board, current_coordinates ).each do | adjacent_coordinate |
+#         if !path_so_far.include?( board[ current_coordinates[ 0 ] ][ current_coordinates[ 1 ] ] )
+#             next_possible_path = path_so_far.clone.push( board[ current_coordinates[ 0 ] ][ current_coordinates[ 1 ] ] )
+#             possible_paths( board, adjacent_coordinate, destination, next_possible_path, path_list )
+#         end
+#     end
+# end
 
 def shortest_path( board, start_coordinates, end_coordinates )
     path_list = []
