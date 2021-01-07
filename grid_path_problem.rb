@@ -37,18 +37,28 @@ def shortest_path( board, start_coordinates, end_coordinates )
     path_list.sort_by( &:size ).first
 end
 
+three_by_three = [
+    [ "00", "01", "02" ],
+    [ "10", "11", "12" ],
+    [ "20", "21", "22" ] ]
+
+two_by_four = [
+    [ "00", "01", "02", "03" ],
+    [ "10", "11", "12", "13" ] ]
+
 four_by_four = [
     [ "00", "01", "02", "03" ],
     [ "10", "11", "12", "13" ],
     [ "20", "21", "22", "23" ],
     [ "30", "31", "32", "33" ] ]
 
+# this one will take nearly a minute to run!
 three_by_six = [
     [ "00", "01", "02", "03", "04", "05" ],
     [ "10", "11", "12", "13", "14", "15" ],
     [ "20", "21", "22", "23", "24", "25" ] ]
 
-# this one will take several hours to run! >.<
+# this one will take several DAYS to run! >.<
 seven_by_seven = [
     [ "00", "01", "02", "03", "04", "05", "06" ],
     [ "10", "11", "12", "13", "14", "15", "16" ],
